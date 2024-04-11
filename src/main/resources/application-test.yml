@@ -1,0 +1,39 @@
+
+#spring:
+#  datasource:
+#    url: 'jdbc:mysql://localhost:3306/study?serverTimezone=UTC'
+#    username: root
+#    password: test123
+#    driver-class-name: com.mysql.jdbc.Driver
+
+#mybatis:
+#  mapper-locations: classpath*:mapper/*.xml
+server:
+  port: 8081
+
+#h2配置
+spring:
+  jpa:
+    show-sql: true # Enable SQL statement logging
+    hibernate:
+      ddl-auto: update # Set ddl mode
+  datasource:
+    url: jdbc:h2:F:/H2/db/db02 # Configure H2 database connection URL
+    username: root # Configure database username
+    password: syc123 # Configure database password
+    driverClassName: org.h2.Driver # Configure JDBC Driver
+    schema: classpath:db/schema.sql # With this configuration, the program will execute resources/db/schema.sql file every time it starts, to operate on the database structure.
+    data: classpath:db/data.sql  # With this configuration, the program will execute resources/db/data.sql file every time it starts, to operate on the database data.
+    platform: h2  # Indicates the database platform used is h2
+  h2: # H2 web console settings
+    console:
+      settings:
+        web-allow-others: true # With this configuration, H2 web console can be accessed remotely. Otherwise, it can only be accessed locally.
+      path: /h2 # With this configuration, you can access H2 web console via YOUR_URL/h2. YOUR_URL is your program's access URL.
+      enabled: true # With this configuration, H2 web console will start when the program starts. This is the default behavior. If you don't want to start H2 web console when starting the program, set it to false.
+
+
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启sql日志
+#    map-underscore-to-case: true # 开启驼峰映射(mp默认开启)
